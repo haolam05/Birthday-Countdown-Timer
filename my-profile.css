@@ -1,0 +1,124 @@
+body {
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#my-name {
+  display: flex;
+  justify-content: center;
+  color: red;
+  align-items: center;
+  margin: 15px;
+}
+
+.my-details {
+  border: 3px solid rgb(225, 102, 102);
+  width: fit-content;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  margin: 0 auto;
+}
+
+.detail {
+  background-color: aquamarine;
+  padding: 15px 45px;
+}
+
+.detail:hover {
+  background-color: #288BAC;
+}
+
+#time-zone {
+  text-align: center;
+  font-style: italic;
+}
+
+#clock {
+  font-weight: bolder;
+  color: rgb(225, 102, 102);
+}
+
+#profile {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+#birthday {
+  background: linear-gradient(to bottom, #FFFDCB, #FFEC95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 68%;
+  padding: 20px 0;
+}
+
+.birthday {
+  font-style: normal;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: #59BBDB;
+  text-shadow:
+    -1px -1px 0px #288BAC,
+    1px -1px 0px #288BAC,
+    -1px 1px 0px #288BAC,
+    1px 1px 0px #288BAC,
+    2px 2px 0px #288BAC;
+  ;
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+
+.birthday-important {
+  font-size: 66px;
+  text-shadow:
+    -1px -1px 0px #288BAC,
+    1px -1px 0px #288BAC,
+    -1px 1px 0px #288BAC,
+    1px 1px 0px #288BAC,
+    2px 2px 0px #288BAC,
+    3px 3px 0px #288BAC,
+    4px 4px 0px #288BAC,
+    5px 5px 0px #288BAC,
+    6px 6px 0px #288BAC,
+    7px 7px 0px #288BAC;
+}
+
+.countdown-text {
+  height: 23%;
+  width: 100%;
+  font-weight: bold;
+  padding-top: 5px;
+  color: rgb(40, 139, 172);
+  font-size: 27px;
+  line-height: 30px;
+  margin-left: 80px;
+}
+
+#countdown-timer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(247, 247, 247);
+  width: 100%;
+  height: 200%;
+  font-size: 130px;
+  line-height: 111px;
+  margin: 20px;
+  background-color: rgb(40, 139, 172);
+  font-weight: 900;
+}
+
+#countdown-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+  text-align: center;
+}
