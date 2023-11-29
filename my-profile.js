@@ -36,7 +36,11 @@ function makeProfileCard(fullName, imgSrc, firstName, facts, dob) {
 
   const button = document.createElement('button');
   button.setAttribute('id', 'switch');
-  button.innerText = '⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️';
+  for (let i = 1; i <= 10; i++) {
+    const span = document.createElement('span');
+    span.innerText = '⏭️'
+    button.appendChild(span);
+  }
   body.appendChild(button);
   button.addEventListener('click', e => {
     body.innerHTML = '';
