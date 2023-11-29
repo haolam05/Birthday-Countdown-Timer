@@ -132,11 +132,15 @@ body {
 
 #switch {
   width: 250px;
-  padding: 10px auto;
   background-color: #FFEC95;
   border-radius: 5px;
   border-color: rgb(40, 139, 172);
   border: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: space-around;
+  gap: 5px;
 }
 
 #switch:hover {
