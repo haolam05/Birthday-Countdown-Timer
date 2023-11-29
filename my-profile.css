@@ -129,3 +129,17 @@ body {
 #countdown-text>span {
   margin-left: 30px;
 }
+
+#switch {
+  width: 250px;
+  padding: 10px auto;
+  background-color: #FFEC95;
+  border-radius: 5px;
+  border-color: rgb(40, 139, 172);
+  border: none;
+}
+
+#switch:hover {
+  background-color: transparent;
+  border: 1px solid rgb(40, 139, 172);
+}
