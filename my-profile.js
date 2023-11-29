@@ -1,27 +1,30 @@
-// makeProfileCard(
-//   'Hao Tuong Lam',
-//   'Profile.png',
-//   'Hao',
-//   ['University of Washington (Seattle)\n🏫', 'Seattle, Washington\n🌧️', 'May 5th, 2001\n🎂', 'Gym\n🏋️'],
-//   '5/5/2001'
-// );
-makeProfileCard(
+const hao = [
+  'Hao Tuong Lam',
+  'Profile.png',
+  'Hao',
+  ['University of Washington (Seattle)\n🏫', 'Seattle, Washington\n🌧️', 'May 5th, 2001\n🎂', 'Gym\n🏋️'],
+  '5/5/2001'
+];
+const cat = [
   'Cat Tuong Lam',
   'cat.jpeg',
   'Cat',
   ['University of Washington (Seattle) 🏫', 'Seattle, Washington 🌧️', 'May 19th, 2002 🎂', 'Gym 🏋️'],
   '5/19/2002'
-);
-// makeProfileCard(
-//   'Huy Tuong Lam',
-//   'huy.jpg',
-//   'Huy',
-//   ['Highline College 🏫', 'Seattle, Washington 🌧️', 'February 10th, 2006 🎂', 'Gym 🏋️'],
-//   '2/10/2006'
-// );
-function makeProfileCard(fullName, imgSrc, firstName, facts, dob) {
-  console.log("This is my profile page!");
+];
+const huy = [
+  'Huy Tuong Lam',
+  'huy.jpg',
+  'Huy',
+  ['Highline College 🏫', 'Seattle, Washington 🌧️', 'February 10th, 2006 🎂', 'Gym 🏋️'],
+  '2/10/2006'
+];
+const bros = [hao, cat, huy];
+let currIdx = 0;
+let timer;
+makeProfileCard(...bros[currIdx]);
 
+function makeProfileCard(fullName, imgSrc, firstName, facts, dob) {
   const body = document.querySelector('body');
 
   const h1 = document.createElement('h1');
@@ -29,6 +32,18 @@ function makeProfileCard(fullName, imgSrc, firstName, facts, dob) {
   h1.setAttribute('id', 'my-name')
   h1.classList.add('name');
   body.appendChild(h1);
+
+
+  const button = document.createElement('button');
+  button.setAttribute('id', 'switch');
+  button.innerText = '⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️⏭️';
+  body.appendChild(button);
+  button.addEventListener('click', e => {
+    body.innerHTML = '';
+    currIdx = (currIdx + 1) % bros.length;
+    clearInterval(timer);
+    makeProfileCard(...bros[currIdx]);
+  })
 
 
   const date = new Date();
@@ -107,29 +122,29 @@ function makeProfileCard(fullName, imgSrc, firstName, facts, dob) {
     const birthdayDiv = document.createElement('birthdayDiv');
     birthdayDiv.setAttribute('id', 'birthday');
     birthdayDiv.innerHTML = `
-  <p class='birthday'>There are only</p>
-  <div id='countdown-timer'>
-    <div class='days'>${timeLeft['days']}</div>
-    <div class='countdown-separator'>:</div>
-    <div class='hours'>${timeLeft['hours']}</div>
-    <div class='countdown-separator'>:</div>
-    <div class='minutes'>${timeLeft['minutes']}</div>
-    <div class='countdown-separator'>:</div>
-    <div class='seconds'>${timeLeft['seconds']}</div>
-  </div>
-  <div id='countdown-text'>
-    <span class='countdown-text'>Days</span>
-    <span class='countdown-text'>Hours</span>
-    <span class='countdown-text'>Minutes</span>
-    <span class='countdown-text'>Seconds</span>
-  </div>
-  <p class='birthday'>until</p>
-  <p class='birthday birthday-important'>${firstName}'s</p>
-  <p class='birthday birthday-important birthday-timeleft'>${ageAtNextBirthday}${ageUnit} Birthday</p>
-  <img src="https://www.howmanydaysuntilmybirthday.com/cake2.png" alt="birthday-cake">
-`
+      <p class='birthday'>There are only</p>
+      <div id='countdown-timer'>
+        <div class='days'>${timeLeft['days']}</div>
+        <div class='countdown-separator'>:</div>
+        <div class='hours'>${timeLeft['hours']}</div>
+        <div class='countdown-separator'>:</div>
+        <div class='minutes'>${timeLeft['minutes']}</div>
+        <div class='countdown-separator'>:</div>
+        <div class='seconds'>${timeLeft['seconds']}</div>
+      </div>
+      <div id='countdown-text'>
+        <span class='countdown-text'>Days</span>
+        <span class='countdown-text'>Hours</span>
+        <span class='countdown-text'>Minutes</span>
+        <span class='countdown-text'>Seconds</span>
+      </div>
+      <p class='birthday'>until</p>
+      <p class='birthday birthday-important'>${firstName}'s</p>
+      <p class='birthday birthday-important birthday-timeleft'>${ageAtNextBirthday}${ageUnit} Birthday</p>
+      <img src="https://www.howmanydaysuntilmybirthday.com/cake2.png" alt="birthday-cake">
+    `
     body.appendChild(birthdayDiv)
-    setInterval(updateCountDown, 1000, birthday);
+    timer = setInterval(updateCountDown, 1000, birthday);
   }
   createCountDownTimerForBirthday(firstName, dob);
 }
