@@ -1,17 +1,17 @@
-makeProfileCard(
-  'Hao Tuong Lam',
-  'Profile.png',
-  'Hao',
-  ['University of Washington (Seattle)\n🏫', 'Seattle, Washington\n🌧️', 'May 5th, 2001\n🎂', 'Gym\n🏋️'],
-  '5/5/2001'
-);
 // makeProfileCard(
-//   'Cat Tuong Lam',
-//   'cat.jpeg',
-//   'Cat',
-//   ['University of Washington (Seattle) 🏫', 'Seattle, Washington 🌧️', 'May 19th, 2002 🎂', 'Gym 🏋️'],
-//   '5/19/2002'
+//   'Hao Tuong Lam',
+//   'Profile.png',
+//   'Hao',
+//   ['University of Washington (Seattle)\n🏫', 'Seattle, Washington\n🌧️', 'May 5th, 2001\n🎂', 'Gym\n🏋️'],
+//   '5/5/2001'
 // );
+makeProfileCard(
+  'Cat Tuong Lam',
+  'cat.jpeg',
+  'Cat',
+  ['University of Washington (Seattle) 🏫', 'Seattle, Washington 🌧️', 'May 19th, 2002 🎂', 'Gym 🏋️'],
+  '5/19/2002'
+);
 // makeProfileCard(
 //   'Huy Tuong Lam',
 //   'huy.jpg',
