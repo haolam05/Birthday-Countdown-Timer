@@ -92,17 +92,17 @@ function makeProfileCard(fullName, imgSrc, firstName, facts, dob) {
   function generateBirthdayTimeleft(birthday) {
     const timeLeft = {};
     const currYear = date.getFullYear();
-    const nextYear = currYear + (Date.now() < birthday.getTime() ? 0 : 1);
+    const nextYear = currYear + 1;
     const timeLetfMillisecond = Number(`${new Date(`${birthday.getMonth() + 1}/${birthday.getDate()}/${nextYear}`) - Date.now()}`);
 
-    timeLeft['days'] = timeLetfMillisecond / 1000 / 3600 / 24;
+    timeLeft['days'] = (timeLetfMillisecond / 1000 / 3600 / 24) % 365;
     timeLeft['hours'] = Number(`0.${`${timeLeft['days']}`.split('.')[1]}`) * 24;
     timeLeft['minutes'] = Number(`0.${`${timeLeft['hours']}`.split('.')[1]}`) * 60;
     timeLeft['seconds'] = Number(`0.${`${timeLeft['minutes']}`.split('.')[1]}`) * 60;
 
     for (const k in timeLeft) {
       timeLeft[k] = `${Math.floor(timeLeft[k])}`;
-      if (k != 'days') timeLeft[k] = timeLeft[k].padStart(2, '0');
+      if (k != 'days' || (k == 'days' && timeLeft[k].length == 1)) timeLeft[k] = timeLeft[k].padStart(2, '0');
     }
 
     const ageAtNextBirthday = nextYear - birthday.getFullYear();
