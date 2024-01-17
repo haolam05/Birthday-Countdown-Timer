@@ -17,7 +17,7 @@ const huy = [
   'huy.jpg',
   'Huy',
   ['Highline College 🏫', 'Seattle, Washington 🌧️', 'February 10th, 2006 🎂', 'Gym 🏋️'],
-  '2/10/2006'
+  '02/10/2006'
 ];
 const bros = [hao, cat, huy];
 let currIdx = 0;
@@ -92,8 +92,13 @@ function makeProfileCard(fullName, imgSrc, firstName, facts, dob) {
   function generateBirthdayTimeleft(birthday) {
     const timeLeft = {};
     const currYear = date.getFullYear();
-    const nextYear = currYear + 1;
-    const timeLetfMillisecond = Number(`${new Date(`${birthday.getMonth() + 1}/${birthday.getDate()}/${nextYear}`) - Date.now()}`);
+    let nextYear = currYear;
+    let timeLetfMillisecond;
+    if ((new Date().getMonth()) < birthday.getMonth() || (new Date().getMonth() === birthday.getMonth() && new Date().getDate() <= birthday.getDate())) {
+      timeLetfMillisecond = Number(`${new Date(`${birthday.getMonth() + 1}/${birthday.getDate()}/${currYear}`) - Date.now()}`);
+    } else {
+      timeLetfMillisecond = Number(`${new Date(`${birthday.getMonth() + 1}/${birthday.getDate()}/${currYear + 1}`) - Date.now()}`);
+    }
 
     timeLeft['days'] = (timeLetfMillisecond / 1000 / 3600 / 24) % 365;
     timeLeft['hours'] = Number(`0.${`${timeLeft['days']}`.split('.')[1]}`) * 24;
@@ -126,6 +131,11 @@ function makeProfileCard(fullName, imgSrc, firstName, facts, dob) {
     const birthdayDiv = document.createElement('birthdayDiv');
     birthdayDiv.setAttribute('id', 'birthday');
     birthdayDiv.innerHTML = `
+
+      ${birthday.getDate() === new Date().getDate() && birthday.getMonth() === new Date().getMonth() ?
+        `<div>Happy BirthDay</div>`
+        :
+        `
       <p class='birthday'>There are only</p>
       <div id='countdown-timer'>
         <div class='days'>${timeLeft['days']}</div>
@@ -146,6 +156,8 @@ function makeProfileCard(fullName, imgSrc, firstName, facts, dob) {
       <p class='birthday birthday-important'>${firstName}'s</p>
       <p class='birthday birthday-important birthday-timeleft'>${ageAtNextBirthday}${ageUnit} Birthday</p>
       <img src="https://www.howmanydaysuntilmybirthday.com/cake2.png" alt="birthday-cake">
+      `
+      }
     `
     body.appendChild(birthdayDiv)
     timer = setInterval(updateCountDown, 1000, birthday);
